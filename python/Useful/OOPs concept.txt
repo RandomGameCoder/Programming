@@ -1,0 +1,133 @@
+___Object Oriented Programming___
+
+Object
+    main class
+
+Method
+    sub-functions in a class
+    while defining a method, *self* is given as the first argument
+
+self
+    while calling a method, the class is automatically passed to the method
+    self accepts it
+
+eg:
+***
+
+class Dog:              #object
+    def bark(self):     #method; self is given to denote that it is a method.
+        print("bark")   #function of method
+
+d = Dog()       #initiating class; this is called an instance of the class
+d.bark()        #calling the method
+
+***
+
+Attribute
+    variables that are specific to a class class.
+
+Initializing(*__init__* method)
+    this is a method which is automatically called when an object is created
+    this method can be used to set attributes
+
+eg:
+***
+class <name>:
+    def __init__(self, x, y):   #Initializing method
+        self.x = x              #attribute
+        self.y = y
+***
+
+Object Oriented Programming helps to make a structure of a code which can be
+accessed infinitely many times in the same code to reduce complexity
+
+__Inheritance__
+
+If a object(parent) is inherited by another object(child), then we can inherit
+the methods and attributes of the parent object. this means that we can access
+the methods and attributes of the parent.
+
+Parent class
+    it is the object from which other objects are inheritting
+
+Child/Derived class
+    it is the object which inherits the parent
+
+eg:
+***
+def Pet:        #parent object
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+
+    def speak(self):
+        print("I don't speak")
+
+def Dog(Pet):       #inheriting the parent object
+    def speak(self):        #this will overwrite speak method of parent
+        print("bark")
+
+def Cat(Pet):
+    def speak(self):
+        print("meow")
+
+def Fish(Pet):
+    pass
+
+p = Cat("Tim", 10)
+p.speak()
+p2 = Dog("Bill", 12)
+p2.speak()
+p3 = Fish("jill", 5)
+p3.speak()          #the method will be called from the parent object
+***
+
+if we want to change specific attributes of the parent object while initiating
+the child object, we use *super().__init__()* method
+
+eg:
+***
+def Pet:        
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+        self.breed = "unknown"
+
+    def speak(self):
+        print("I don't speak")
+
+def Dog(Pet):
+    def __init__(self,breed,color):
+        super().__init__(breed)     #this sets the *breed* attribute of parent to the given breed
+        self.color = color          #this is an attribute specific to the child object
+***
+
+Attributes are different at different situations
+We can define attributes in both parent class and child class
+
+When defining attributes in parent class, we can make it specific to the parent class only by defining
+it before the *__init__* method
+
+We can also create methods which are specific to the parent class by adding the *@classmethod* tag
+before defining the method. But while defining the method, *cls* is given as argument instead of *self*
+this makes sure that it acts as a method of the class instead as a method of the instance
+
+Static Method
+    These are methods which are defined in a class but they do not affect the class in any way
+    *@staticmethod* tag is given before defining a static method
+
+eg:
+***
+class <name>:
+    VAR = 0         #This is an attribute specific to the class
+    def __init__(self,x):
+        self.x = x
+    
+    @classmethod
+    def add(cls):       #method specific to the class
+        VAR += 1
+    
+    @staticmethod
+    def add(x,y):       #static method; does not affect the class in any way
+        return x + y
+***

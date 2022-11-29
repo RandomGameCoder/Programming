@@ -1,0 +1,49 @@
+# Blender MTL File: '1.blend'
+# Material Count: 5
+
+newmtl Metal_goldleaf
+Ns 498.039216
+Ka 0.000000 0.000000 0.000000
+Kd 0.133631 0.075933 0.000930
+Ks 1.000000 0.954887 0.699248
+Ni 1.000000
+d 1.000000
+illum 2
+map_Bump D:\\Files\\Blender\\Materials\\textures\\cubist.tga
+
+newmtl Metal_rough
+Ns 54.901961
+Ka 0.000000 0.000000 0.000000
+Kd 0.231962 0.231916 0.231916
+Ks 0.600000 0.800000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Metal_rough.001
+Ns 54.901961
+Ka 0.000000 0.000000 0.000000
+Kd 0.295692 0.182101 0.099216
+Ks 0.600000 0.800000 1.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl Metal_rust
+Ns 337.254902
+Ka 0.000000 0.000000 0.000000
+Kd 0.343411 0.201805 0.108505
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+
+newmtl Wood_Mahogany_Board
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.232813 0.159337 0.159337
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd D:\\Files\\Blender\\Materials\\textures\\Mahogany Boards.jpg
