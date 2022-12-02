@@ -1,4 +1,0 @@
-Q. Write a menu-driven program implementing user-defined functions to perform different functions on a csv file “student” such as:
-(a) Write a single record to csv.
-(b) Write all the records in one single go onto the csv.
-(c) Display the contents of the csv file.
