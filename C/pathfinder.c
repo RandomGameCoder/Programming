@@ -11,37 +11,65 @@ typedef struct retval {
     node *start;
 } ret;
 
-void clear(ret *a) {}
+void clear(node *a) {
+    node* temp;
+    while(a != NULL) {
+        temp = a;
+        a = a->next;
+        free(temp);
+    }
+}
 
-ret* search(int** arr, int m, int n, int a, int b, int dir) {
-    ret *a[8], *cur;
+//0. north
+//1. south
+//2. east
+//3. west
+//4. northeast
+//5. northwest
+//6. southeast
+//7. southwest
+
+//recursive function to search the path
+ret* search(int** arr, int m, int n, int a, int b, node* head) {
+    ret *retvals[8], *cur;
+    node *ptr = head, *temp;
     int min = -1;
-    if(a-1!=0 && arr[a-1][b]!=1 && dir!=1) //north
-        a[0]=search(arr, m, n, a-1, b, 2);
-    if(a+1!=m && arr[a+1][b]!=1 && dir!=2) //south
-        a[1]=search(arr, m, n, a+1, b, 1);
-    if(b+1!=n && arr[a][b+1]!=1 && dir!=3) //east
-        a[2]=search(arr, m, n, a, b+1, 4);
-    if(b-1!=0 && arr[a][b-1]!=1 && dir!=4) //west
-        a[3]=search(arr, m, n, a, b-1, 3);
+    if(a == m-1 && b == n-1) {
+        cur = (ret*) malloc(sizeof(ret));
+        temp = (node*) malloc(sizeof(node));
+        temp->r = a;
+        temp->c = b;
+        temp->next = NULL;
+        cur->len = 1;
+        cur->start = temp;
+        return cur;
+    }
+    else {
+        //initialising list to null
+        for(int i = 0; i<8; i++) {
+            retvals[i] = NULL;
+        }
 
-    //need to change
-    if(a-1!=0 && b+1!=n && arr[a-1][b+1]!=1 && dir!=5) //northeast
-        a[4]=search(arr, m, n, a-1, b, 2);
-    if(a-1!=0 && b-1!=0 && arr[a-1][b-1]!=1 && dir!=6) //northwest
-        a[5]=search(arr, m, n, a-1, b, 2);
-    if(a+1!=m && b-1!=0 && arr[a+1][b-1]!=1 && dir!=7) //southwest
-        a[6]=search(arr, m, n, a-1, b, 2);
-    if(a+1!=m && b+1!=n && arr[a+1][b+1]!=1 && dir!=8) //southeast
-        a[7]=search(arr, m, n, a-1, b, 2);
-    for(int i = 0; i<8; i++) {
-        if(i == dir) {
-            clear(a[i])
-            continue;
+        //add current position to head
+        while(ptr->next != NULL) { 
+            ptr = ptr->next;
         }
-        if(a[i]!= NULL && (min == -1 || a[min]->len>a[i]->len)) {
-            min = i;
-        }
+        ptr->next = (node*) malloc(sizeof(node));
+        ptr = ptr->next;
+        ptr->r = a;
+        ptr->c = b;
+        ptr->next = NULL;
+
+        //search in each direction
+
+        //remove current position from head
+
+        //find shortest from all returned paths
+
+        //if all path null, return null
+
+        //if shortest path found, return length and list after inserting
+        //current position in list
     }
 }
 
