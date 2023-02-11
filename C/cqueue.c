@@ -1,11 +1,29 @@
 
 #include <stdio.h>
 
-int items[50], front = -1, rear = -1, SIZE=50;
+int items[5], front = -1, rear = -1, SIZE=5;
+
+int isFull()
+{
+    if ((front == rear + 1) || (front == 0 && rear == SIZE - 1)) 
+    {
+        return 1;
+    }
+    return 0;
+}
+
+int isEmpty()
+{
+    if (front == -1)
+    {
+        return 1;
+    }
+    return 0;
+}
 
 void EnQueue(int value)
 {
-    if (rear == SIZE - 1)
+    if (isFull())
     {
         printf("Queue is Full\n");
     }
@@ -15,7 +33,7 @@ void EnQueue(int value)
         {
             front = 0;
         }
-        rear++;
+        rear = (rear+1) % SIZE;
         items[rear] = value;
         printf("Inserted : %d\n", value);
     }
@@ -23,25 +41,30 @@ void EnQueue(int value)
 
 void DeQueue()
 {
-    if (front == -1)
+    int element;
+    if (isEmpty())
     {
         printf("Queue is Empty\n");
     }
     else 
     {
-        printf("Deleted : %d\n", items[front]);
-        front++;
-        if (front > rear)
+        element = items[front];
+        if (front == rear)
         {
             front = -1;
             rear = -1;
         }
+        else
+        {
+            front = (front+1) % SIZE;
+        }
+        printf("Deleted : %d\n", element);
     }
 }
 
 void display()
 {
-    if (rear == -1)
+    if (isEmpty())
     {
         printf("Queue is Empty\n");
     }
@@ -49,10 +72,11 @@ void display()
     {
         int i;
         printf("Queue elements are:\n");
-        for (i = front; i <= rear; i++)
+        for (i = front; i != rear; i = (i+1) % SIZE)
         {
             printf("%d  ", items[i]);
         }
+        printf("%d  ", items[i]);
     }
     printf("\n");
 }
