@@ -1,6 +1,12 @@
 {
     "configurations": [
-        
+        {
+            "type": "java",
+            "name": "Launch SnakeGame",
+            "request": "launch",
+            "mainClass": "SnakeGame",
+            "projectName": "Programming_bf656950"
+        },
         {
             "name": "C/C++: gcc.exe build and debug active file",
             "type": "cppdbg",
