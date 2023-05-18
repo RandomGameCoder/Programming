@@ -375,7 +375,7 @@ void main() {
                 printf("Exiting...");
                 break;
             default:
-                printf("!!!Invalid option!!!");
+                printf("!!!Invalid option!!!\n");
                 break;
         }
     }
