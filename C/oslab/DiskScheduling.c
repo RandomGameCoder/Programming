@@ -1,17 +1,21 @@
 #include<stdio.h>
+#include<stdlib.h>
 
-void FCFS(int n, int seq[], int head) {
-    int seek = 0;
+void Seqandtime(int n, int seq[], int head) {
+    int seek = 0, curr = head;
+    printf("\nThe seek sequence is : %d ", head);
     for(int i = 0; i < n; i++) {
-        seek += abs(head-seq[i]);
+        printf("-> %d ", seq[i]);
+        seek += abs(curr-seq[i]);
+        curr = seq[i];
     }
-    printf("Seek time : %d", seek);
+    printf("\n\nSeek time : %d\n", seek);
 }
 
 void main() {
-    int max = 99, n, seq[20], head, prev, op, f = 0;
+    int max = 99, n, seq[20], head, prev, op, f = 0, dir = 1, i, temp, index;
     while(f == 0) {
-        printf("1: Change limit (current : %d)\n2: Input head pointer\n3: Seek sequence\n", max)
+        printf("1: Change limit (current : %d)\n2: Input head pointer\n3: Seek sequence\n", max);
         printf("\nEnter the option: ");
         scanf("%d", &op);
         switch(op) {
@@ -24,15 +28,65 @@ void main() {
             scanf("%d", &head);
             printf("Enter previous pointer location(same as head if none): ");
             scanf("%d", &prev);
+            if(prev-head < 0)
+                dir = -1;
             break;
         case 3:
             printf("Enter the number of locations to seek: ");
             scanf("%d", &n);
             printf("Enter the seek sequence: ");
-            for(int i = 0; i < n; i++) {
+            for(i = 0; i < n; i++) {
                 scanf("%d", &seq[i]);
             }
-            FCFS(n, seq, head);
+            Seqandtime(n, seq, head);
+            i = head;
+            index = 0;
+            while(!(i == max || i == 0)) {
+                for(int j = index; j < n; j++) {
+                    if(seq[j]==i) {
+                        temp = seq[index];
+                        seq[index] = seq[j];
+                        seq[j] = temp;
+                        index++;
+                    }
+                }
+                i+=dir;
+            }
+            seq[n] = seq[index];
+            seq[index] = i;
+            index++;
+            n++;
+            seq[n] = max-i;
+            dir *= -1;
+            i = head;
+            while(index < n) {
+                for(int j = index; j < n; j++) {
+                    if(seq[j]==i) {
+                        temp = seq[index];
+                        seq[index] = seq[j];
+                        seq[j] = temp;
+                        index++;
+                    }
+                }
+                i+=dir;
+            }
+            Seqandtime(n, seq, head);
+            dir *= -1;
+            n++;
+            i = head;
+            index = 0;
+            while(index < n) {
+                for(int j = index; j < n; j++) {
+                    if(seq[j]==i) {
+                        temp = seq[index];
+                        seq[index] = seq[j];
+                        seq[j] = temp;
+                        index++;
+                    }
+                }
+                i=(i+dir)%(max+1);
+            }
+            Seqandtime(n, seq, head);
             break;
         default:
             break;
