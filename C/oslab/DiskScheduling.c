@@ -38,6 +38,7 @@ void main() {
             for(i = 0; i < n; i++) {
                 scanf("%d", &seq[i]);
             }
+            printf(" \nFCFS\n");
             Seqandtime(n, seq, head);
             i = head;
             index = 0;
@@ -70,6 +71,7 @@ void main() {
                 }
                 i+=dir;
             }
+            printf(" \nSCAN\n");
             Seqandtime(n, seq, head);
             dir *= -1;
             n++;
@@ -86,6 +88,7 @@ void main() {
                 }
                 i=(i+dir)%(max+1);
             }
+            printf(" \nC SCAN\n");
             Seqandtime(n, seq, head);
             break;
         default:
