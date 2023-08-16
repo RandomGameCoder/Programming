@@ -28,7 +28,7 @@ void main() {
             scanf("%d", &head);
             printf("Enter previous pointer location(same as head if none): ");
             scanf("%d", &prev);
-            if(prev-head < 0)
+            if(prev-head > 0)
                 dir = -1;
             break;
         case 3:

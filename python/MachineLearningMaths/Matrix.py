@@ -1,3 +1,5 @@
+import paramiko
+
 class DimensionError(Exception):
     def __init__(self, val):
         self.value = val
