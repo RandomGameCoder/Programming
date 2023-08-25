@@ -2,7 +2,6 @@ import pygame
 
 class Game:
     
-    
     def __init__(self, window_width, window_height, title = "Untitled"):
         # initialize pygame
         pygame.init()
@@ -12,17 +11,17 @@ class Game:
         pygame.display.set_caption(title)
         
         # game loop
-        self.game_loop()
+        self.__game_loop()
     
-    def game_loop(self):
+    def __game_loop(self):
         # main game loop
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.exit()
+                    return None
                 elif event.type == pygame.KEYDOWN:
                     self.keypressed(event.key)
-    
     
     def keypressed(self, key):
         # automatically called at time of execution, the key value is automatically passed
@@ -38,4 +37,8 @@ class Game:
     
     def render(self):
         # function to override
-        pass   
+        pass
+                    
+if __name__ == "__main__":
+    new = Game(800, 600)
+    
