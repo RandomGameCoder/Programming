@@ -144,7 +144,7 @@ def main():
             
             rem=[]
             add_pipe=False
-            bird.move(10)
+            bird.move()
             for pipe in pipes:
                   if pipe.collide(bird):
                         pass

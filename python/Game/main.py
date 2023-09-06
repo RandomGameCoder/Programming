@@ -8,6 +8,8 @@ class Sim(Game):
     CELL_WIDTH = 0
     CELL_HEIGHT = 0
     
+    SHOW_GRID = False
+    
     def __init__(self, g_width: int, g_height: int, c_width: int, c_height: int):
         """_summary_
 
@@ -28,5 +30,14 @@ class Sim(Game):
         height = self.CELL_HEIGHT * self.GRID_HEIGHT
         
         # initialising the window
-        super().__init__(width, height, self.TITLE)
-        
+        super().__init__(width, height)
+    
+    def show_grid(self, value: bool):
+        self.SHOW_GRID = value
+    
+    def render(self, window):
+        pass
+
+
+if __name__ == "__main__":
+    s = Sim(10,10,10,10)
