@@ -171,4 +171,4 @@ class Sim(Game):
                 pygame.draw.line(window, (255,255,255), (0, i*self.CELL_HEIGHT),(self.CELL_WIDTH * self.GRID_WIDTH, i*self.CELL_HEIGHT))
                     
 if __name__ == "__main__":
-    new = Sim(128,128,8,8)
+    new = Sim(128,128,5,5)

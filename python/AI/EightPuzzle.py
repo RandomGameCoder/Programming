@@ -63,11 +63,10 @@ def child_node(problem: Problem, node: Node, action):
     child.set_parent(node)
     return child    
 
-if __name__ == "__main__":
-    p = Problem()
-    state = []
-    for i in p.INITIAL_STATE:
-        state.append(i.copy())
-    n = Node(state, 0)
-    child = child_node(p,n,'l')
-    print(p.INITIAL_STATE, n.STATE, child.STATE, sep = '\n')
+p = Problem()
+state = []
+for i in p.INITIAL_STATE:
+    state.append(i.copy())
+n = Node(state, 0)
+child = child_node(p,n,'l')
+print(p.INITIAL_STATE, n.STATE, child.STATE, sep = '\n')
