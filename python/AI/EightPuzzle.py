@@ -1,18 +1,16 @@
 class Node:
     PARENT = None
-    def __init__(self, state, cost):
+    def __init__(self, state, cost, parent):
         self.STATE = state
         self.PATH_COST = cost
-    
-    def set_parent(self, node):
-        self.PARENT = node
+        self.PARENT = parent
 
 class Problem:
     
     INITIAL_STATE = [
-        [ '5', '7', '3' ],
-        [ '4', ' ', '2' ],
-        [ '8', '1', '6' ],
+        [ '4', '6', '1' ],
+        [ '5', ' ', '3' ],
+        [ '2', '7', '8' ],
     ]
     
     FINAL_STATE = [
@@ -43,7 +41,7 @@ class Problem:
             a.remove('r')
         return a
 
-def child_node(problem: Problem, node: Node, action):
+def child_node(node: Node, action):
     state = []
     bi = bj = 0
     for i in node.STATE:
@@ -59,14 +57,41 @@ def child_node(problem: Problem, node: Node, action):
         state[bi-1][bj], state[bi][bj] = state[bi][bj], state[bi-1][bj]
     else:
         state[bi+1][bj], state[bi][bj] = state[bi][bj], state[bi+1][bj]
-    child = Node(state, node.PATH_COST+1)
-    child.set_parent(node)
+    child = Node(state, node.PATH_COST+1, node)
     return child    
 
+def solution(node):
+    l = [node]
+    while node.PARENT!=None:
+        l.append(node.PARENT)
+        node = node.PARENT
+    return l
+
+def DFS(problem):
+    state = []
+    for i in problem.INITIAL_STATE:
+        state.append(i.copy())
+    node = Node(state, 0, None)
+    if problem.GOAL_TEST(node.STATE):
+        return solution(node)
+    frontier = [node]
+    explored = []
+    while frontier!=[]:
+        node = frontier.pop()
+        explored.append(node.STATE)
+        for action in problem.ACTIONS(node.STATE):
+            child = child_node(node, action)
+            for i in frontier:
+                if child.STATE == i.STATE:
+                    break
+            else:
+                if child.STATE not in explored:
+                    if problem.GOAL_TEST(child.STATE):
+                        return solution(child)
+                    frontier.append(child)
+    return None
+
 p = Problem()
-state = []
-for i in p.INITIAL_STATE:
-    state.append(i.copy())
-n = Node(state, 0)
-child = child_node(p,n,'l')
-print(p.INITIAL_STATE, n.STATE, child.STATE, sep = '\n')
+s = DFS(p)
+for i in s[::-1]:
+    print(i.STATE)
