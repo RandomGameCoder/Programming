@@ -13,7 +13,7 @@ brightgreen=(0,255,0)
 brightred=(255,0,0)
 yellow=(255,255,0)
 pygame.display.set_caption("PAC-MAN")
-icon=pygame.image.load(r'images\pac-man\open.png')
+icon=pygame.image.load(r'images\pac-man\open.png').convert_alpha()
 pygame.display.set_icon(icon)
 clock=pygame.time.Clock()
 l=1
@@ -79,7 +79,7 @@ def death():
         for image in images:
             ghosts.scrn.fill(blck)
             drawdeath()
-            pac_man=pygame.image.load("images\\pac-man\\"+image+".png")
+            pac_man=pygame.image.load("images\\pac-man\\"+image+".png").convert_alpha()
             blitRotateCenter(ghosts.scrn,pac_man,(x,y),angle)
             pygame.display.flip()
             time.sleep(0.2)
@@ -232,13 +232,16 @@ def Score():
 def drawmaze():
     global life,beaten
     lifelist=((1,617),(13,617),(26,617))
-    wall=pygame.image.load("images\\wall.png")
-    palet=pygame.image.load("images\\palet.png")
-    door=pygame.image.load("images\\door.png")
-    power_palet=pygame.image.load("images\\power_palet.png")
-    lifeimg=pygame.image.load("images\\life.png")
+    wall=pygame.image.load("images\\wall.png").convert_alpha()
+    palet=pygame.image.load("images\\palet.png").convert_alpha()
+    door=pygame.image.load("images\\door.png").convert_alpha()
+    power_palet=pygame.image.load("images\\power_palet.png").convert_alpha()
+    lifeimg=pygame.image.load("images\\life.png").convert_alpha()
+    surface = pygame.Surface((800,650))
+    surface.set_colorkey(wall.get_colorkey())
     for loc in ghosts.wall_list:
-        ghosts.scrn.blit(wall,loc)
+        surface.blit(wall,loc)
+    ghosts.scrn.blit(surface,(0,0))
     for loc in ghosts.food_list:
         ghosts.scrn.blit(palet,loc)
     for loc in ghosts.palet_list:
@@ -254,7 +257,7 @@ def drawmaze():
     ghosts.clyde(m,ceaten)
 def disppacman(x,y):
     global l,side
-    pac_open=pygame.image.load(r'images\pac-man\open.png')
+    pac_open=pygame.image.load(r'images\pac-man\open.png').convert_alpha()
     pac_closed=pygame.image.load(r'images\pac-man\closed.png')
     if l==31:
         l=1

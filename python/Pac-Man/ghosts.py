@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 import pygame
 pygame.init()
 bside=cside=iside=pside="left"
@@ -93,12 +92,12 @@ def turn(x,y,dest,side):
             side="left"
     return side
 def blinky(x,y,mode,eaten):
-    blnky_img=pygame.image.load(r'images\ghosts\blinkyl.png')
+    blnky_img=pygame.image.load(r'images\ghosts\blinkyl.png').convert_alpha()
     if mode=="fright":
-        blnky_img=pygame.image.load(r"images\ghosts\frightened.png")
+        blnky_img=pygame.image.load(r"images\ghosts\frightened.png").convert_alpha()
         if eaten:
-            up=pygame.image.load("images\\ghosts\\eyeup.png")
-            left=pygame.image.load("images\\ghosts\\eyeleft.png")
+            up=pygame.image.load("images\\ghosts\\eyeup.png").convert_alpha()
+            left=pygame.image.load("images\\ghosts\\eyeleft.png").convert_alpha()
             if bside=="up":
                 blnky_img=up
             elif bside=="left":
@@ -113,29 +112,29 @@ def blinky(x,y,mode,eaten):
                 x,y=new_rect.topleft
             if bl_back:
                 if bside=="left":
-                    blnky_img=pygame.image.load(r'images\ghosts\blinkyl.png')
+                    blnky_img=pygame.image.load(r'images\ghosts\blinkyl.png').convert_alpha()
                 elif bside=="right":
-                    blnky_img=pygame.image.load(r'images\ghosts\blinkyr.png')
+                    blnky_img=pygame.image.load(r'images\ghosts\blinkyr.png').convert_alpha()
                 elif bside=="up":
-                    blnky_img=pygame.image.load(r'images\ghosts\blinkyu.png')
+                    blnky_img=pygame.image.load(r'images\ghosts\blinkyu.png').convert_alpha()
                 elif bside=="down":
-                    blnky_img=pygame.image.load(r'images\ghosts\blinkyd.png')
+                    blnky_img=pygame.image.load(r'images\ghosts\blinkyd.png').convert_alpha()
     else:
         if bside=="left":
-            blnky_img=pygame.image.load(r'images\ghosts\blinkyl.png')
+            blnky_img=pygame.image.load(r'images\ghosts\blinkyl.png').convert_alpha()
         elif bside=="right":
-            blnky_img=pygame.image.load(r'images\ghosts\blinkyr.png')
+            blnky_img=pygame.image.load(r'images\ghosts\blinkyr.png').convert_alpha()
         elif bside=="up":
-            blnky_img=pygame.image.load(r'images\ghosts\blinkyu.png')
+            blnky_img=pygame.image.load(r'images\ghosts\blinkyu.png').convert_alpha()
         elif bside=="down":
-            blnky_img=pygame.image.load(r'images\ghosts\blinkyd.png')
+            blnky_img=pygame.image.load(r'images\ghosts\blinkyd.png').convert_alpha()
     scrn.blit(blnky_img,(x,y))
 def inky(x,y,mode,eaten):
     if mode=="fright":
-        nky_img=pygame.image.load(r"images\ghosts\frightened.png")
+        nky_img=pygame.image.load(r"images\ghosts\frightened.png").convert_alpha()
         if eaten:
-            up=pygame.image.load("images\\ghosts\\eyeup.png")
-            left=pygame.image.load("images\\ghosts\\eyeleft.png")
+            up=pygame.image.load("images\\ghosts\\eyeup.png").convert_alpha()
+            left=pygame.image.load("images\\ghosts\\eyeleft.png").convert_alpha()
             if iside=="up":
                 nky_img=up
             elif iside=="left":
@@ -150,22 +149,22 @@ def inky(x,y,mode,eaten):
                 x,y=new_rect.topleft
             if in_back:
                 if iside=="left":
-                    nky_img=pygame.image.load(r'images\ghosts\inkyl.png')
+                    nky_img=pygame.image.load(r'images\ghosts\inkyl.png').convert_alpha()
                 elif iside=="right":
-                    nky_img=pygame.image.load(r'images\ghosts\inkyr.png')
+                    nky_img=pygame.image.load(r'images\ghosts\inkyr.png').convert_alpha()
                 elif iside=="up":
-                    nky_img=pygame.image.load(r'images\ghosts\inkyu.png')
+                    nky_img=pygame.image.load(r'images\ghosts\inkyu.png').convert_alpha()
                 elif iside=="down":
-                    nky_img=pygame.image.load(r'images\ghosts\inkyd.png')
+                    nky_img=pygame.image.load(r'images\ghosts\inkyd.png').convert_alpha()
     else:
         if iside=="left":
-            nky_img=pygame.image.load(r'images\ghosts\inkyl.png')
+            nky_img=pygame.image.load(r'images\ghosts\inkyl.png').convert_alpha()
         elif iside=="right":
-            nky_img=pygame.image.load(r'images\ghosts\inkyr.png')
+            nky_img=pygame.image.load(r'images\ghosts\inkyr.png').convert_alpha()
         elif iside=="up":
-            nky_img=pygame.image.load(r'images\ghosts\inkyu.png')
+            nky_img=pygame.image.load(r'images\ghosts\inkyu.png').convert_alpha()
         elif iside=="down":
-            nky_img=pygame.image.load(r'images\ghosts\inkyd.png')
+            nky_img=pygame.image.load(r'images\ghosts\inkyd.png').convert_alpha()
     scrn.blit(nky_img,(x,y))
 def pinky(x,y,mode,eaten):
     global ptop,pdwn,plft,prgt
@@ -174,10 +173,10 @@ def pinky(x,y,mode,eaten):
     plft=(x+10,y)
     prgt=(x+20,y+10)
     if mode=="fright":
-        pnky_img=pygame.image.load(r"images\ghosts\frightened.png")
+        pnky_img=pygame.image.load(r"images\ghosts\frightened.png").convert_alpha()
         if eaten:
-            up=pygame.image.load("images\\ghosts\\eyeup.png")
-            left=pygame.image.load("images\\ghosts\\eyeleft.png")
+            up=pygame.image.load("images\\ghosts\\eyeup.png").convert_alpha()
+            left=pygame.image.load("images\\ghosts\\eyeleft.png").convert_alpha()
             if pside=="up":
                 pnky_img=up
             elif pside=="left":
@@ -192,30 +191,30 @@ def pinky(x,y,mode,eaten):
                 x,y=new_rect.topleft
             if pi_back:
                 if pside=="left":
-                    pnky_img=pygame.image.load(r'images\ghosts\pinkyl.png')
+                    pnky_img=pygame.image.load(r'images\ghosts\pinkyl.png').convert_alpha()
                 elif pside=="right":
-                    pnky_img=pygame.image.load(r'images\ghosts\pinkyr.png')
+                    pnky_img=pygame.image.load(r'images\ghosts\pinkyr.png').convert_alpha()
                 elif pside=="up":
-                    pnky_img=pygame.image.load(r'images\ghosts\pinkyu.png')
+                    pnky_img=pygame.image.load(r'images\ghosts\pinkyu.png').convert_alpha()
                 elif pside=="down":
-                    pnky_img=pygame.image.load(r'images\ghosts\pinkyd.png')
+                    pnky_img=pygame.image.load(r'images\ghosts\pinkyd.png').convert_alpha()
     else:
         if pside=="left":
-            pnky_img=pygame.image.load(r'images\ghosts\pinkyl.png')
+            pnky_img=pygame.image.load(r'images\ghosts\pinkyl.png').convert_alpha()
         elif pside=="right":
-            pnky_img=pygame.image.load(r'images\ghosts\pinkyr.png')
+            pnky_img=pygame.image.load(r'images\ghosts\pinkyr.png').convert_alpha()
         elif pside=="up":
-            pnky_img=pygame.image.load(r'images\ghosts\pinkyu.png')
+            pnky_img=pygame.image.load(r'images\ghosts\pinkyu.png').convert_alpha()
         elif pside=="down":
-            pnky_img=pygame.image.load(r'images\ghosts\pinkyd.png')
+            pnky_img=pygame.image.load(r'images\ghosts\pinkyd.png').convert_alpha()
     scrn.blit(pnky_img,(x,y))
 def clyde(mode,eaten):
     global clx,cly
     if mode=="fright":
-        clyd_img=pygame.image.load(r"images\ghosts\frightened.png")
+        clyd_img=pygame.image.load(r"images\ghosts\frightened.png").convert_alpha()
         if eaten:
-            up=pygame.image.load("images\\ghosts\\eyeup.png")
-            left=pygame.image.load("images\\ghosts\\eyeleft.png")
+            up=pygame.image.load("images\\ghosts\\eyeup.png").convert_alpha()
+            left=pygame.image.load("images\\ghosts\\eyeleft.png").convert_alpha()
             if cside=="up":
                 clyd_img=up
             elif pside=="left":
@@ -230,22 +229,22 @@ def clyde(mode,eaten):
                 clx,cly=new_rect.topleft
             if cl_back:
                 if cside=="left":
-                    clyd_img=pygame.image.load(r'images\ghosts\clydel.png')
+                    clyd_img=pygame.image.load(r'images\ghosts\clydel.png').convert_alpha()
                 elif cside=="right":
-                    clyd_img=pygame.image.load(r'images\ghosts\clyder.png')
+                    clyd_img=pygame.image.load(r'images\ghosts\clyder.png').convert_alpha()
                 elif cside=="up":
-                    clyd_img=pygame.image.load(r'images\ghosts\clydeu.png')
+                    clyd_img=pygame.image.load(r'images\ghosts\clydeu.png').convert_alpha()
                 else:
-                    clyd_img=pygame.image.load(r'images\ghosts\clyded.png')
+                    clyd_img=pygame.image.load(r'images\ghosts\clyded.png').convert_alpha()
     else:
         if cside=="left":
-            clyd_img=pygame.image.load(r'images\ghosts\clydel.png')
+            clyd_img=pygame.image.load(r'images\ghosts\clydel.png').convert_alpha()
         elif cside=="right":
-            clyd_img=pygame.image.load(r'images\ghosts\clyder.png')
+            clyd_img=pygame.image.load(r'images\ghosts\clyder.png').convert_alpha()
         elif cside=="up":
-            clyd_img=pygame.image.load(r'images\ghosts\clydeu.png')
+            clyd_img=pygame.image.load(r'images\ghosts\clydeu.png').convert_alpha()
         else:
-            clyd_img=pygame.image.load(r'images\ghosts\clyded.png')
+            clyd_img=pygame.image.load(r'images\ghosts\clyded.png').convert_alpha()
     scrn.blit(clyd_img,(clx,cly))
 def bmove(x,y,m):
     global blx,bly
